@@ -13,7 +13,9 @@
             box-sizing: border-box;
         }
 
-        body {
+        html, body {
+            width: 100%;
+            height: 100%;
             font-family: Arial, Helvetica, sans-serif;
             background: white;
             color: #1b1b1b;
@@ -22,11 +24,20 @@
         @media print {
             @page {
                 margin: 0;
-                size: A4;
+                size: A4 portrait;
             }
-            body {
+            html, body {
                 margin: 0;
                 padding: 0;
+                width: 210mm;
+                height: 297mm;
+            }
+            .flyer-container {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+                width: 210mm;
+                height: 297mm;
             }
         }
 
@@ -39,20 +50,21 @@
             display: flex;
             flex-direction: column;
             position: relative;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
         }
 
-        /* Background pattern */
-        .flyer-container::before {
-            content: "";
+        /* Background pattern com vírus */
+        .flyer-bg {
             position: absolute;
             inset: 0;
-            background-image:
-                radial-gradient(circle at 10% 15%, rgba(217, 45, 45, 0.05) 0 1%, transparent 1.2%),
-                radial-gradient(circle at 90% 25%, rgba(217, 45, 45, 0.05) 0 1%, transparent 1.2%);
-            background-size: 100px 100px;
-            pointer-events: none;
             z-index: 0;
+            opacity: 0.08;
+            background-image:
+                radial-gradient(circle at 5% 10%, #d92d2d 0%, transparent 2%),
+                radial-gradient(circle at 85% 20%, #d92d2d 0%, transparent 2%),
+                radial-gradient(circle at 95% 85%, #d92d2d 0%, transparent 2.5%);
+            background-repeat: repeat;
+            background-size: 200px 200px;
         }
 
         .flyer-content {
@@ -61,142 +73,262 @@
             display: flex;
             flex-direction: column;
             height: 100%;
-            padding: 20mm;
+            padding: 0;
         }
 
-        /* Header */
+        /* ===== HEADER ===== */
         .flyer-header {
             text-align: center;
-            margin-bottom: 15mm;
-            border-bottom: 3mm solid #d92d2d;
-            padding-bottom: 10mm;
+            background: white;
+            padding: 10mm 15mm;
+            border-bottom: 1mm solid #e0e0e0;
         }
 
-        .flyer-logo {
-            width: 40mm;
-            height: 40mm;
-            margin: 0 auto 8mm;
-            background: white;
-            border: 3px solid #d92d2d;
+        .header-logo-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 8mm;
+        }
+
+        .fatec-logo {
+            width: 38mm;
+            height: 38mm;
             border-radius: 50%;
+            background: white;
+            border: 3mm solid #d92d2d;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
+            position: relative;
             font-weight: bold;
-            color: #d92d2d;
+            font-size: 12px;
+            text-align: center;
+            box-sizing: border-box;
         }
 
-        .flyer-header h1 {
-            font-size: 28px;
-            font-weight: 900;
-            color: #1b1b1b;
-            line-height: 1.2;
-            margin-bottom: 5mm;
-            text-transform: uppercase;
-            letter-spacing: -0.5px;
+        .fatec-logo::before {
+            content: "";
+            position: absolute;
+            width: 24mm;
+            height: 24mm;
+            border: 2mm solid #1b1b1b;
+            border-radius: 50%;
+            inset: 50%;
+            transform: translate(-50%, -50%);
         }
 
-        .flyer-header p {
-            font-size: 10px;
-            font-weight: 700;
-            color: #555;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Content grid */
-        .flyer-grid {
+        .fatec-inner {
+            position: relative;
+            z-index: 2;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8mm;
-            flex: 1;
-            margin-bottom: 12mm;
-        }
-
-        .flyer-box {
-            background: rgba(255,255,255,0.7);
-            border: 2px solid #1b1b1b;
-            border-radius: 8px;
-            padding: 8mm;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .flyer-box h2 {
-            font-size: 12px;
+            gap: 2mm;
+            width: 22mm;
+            height: 22mm;
+            font-size: 6px;
+            line-height: 1;
             font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 6mm;
-            color: #d92d2d;
-            border-bottom: 2px solid #1b1b1b;
-            padding-bottom: 4mm;
+        }
+
+        .fatec-inner > div {
             display: flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
         }
 
-        .box-icon {
-            width: 20px;
-            height: 20px;
+        .fatec-inner .red { background: #d92d2d; color: white; }
+        .fatec-inner .black { background: #1b1b1b; color: white; }
+
+        .fatec-text {
+            position: absolute;
+            bottom: -8mm;
+            font-size: 5px;
+            font-weight: 900;
+            text-align: center;
+            width: 38mm;
+            line-height: 1.2;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #1b1b1b;
+        }
+
+        .header-title {
+            margin-top: 3mm;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8mm;
+        }
+
+        .virus-icon {
+            width: 16mm;
+            height: 16mm;
             background: #d92d2d;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 12mm;
             color: white;
-            font-size: 12px;
             font-weight: bold;
+        }
+
+        .flyer-header h1 {
+            font-size: 20px;
+            font-weight: 900;
+            color: white;
+            line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            background: #1b1b1b;
+            padding: 6mm 8mm;
+            transform: skewX(-10deg);
+            display: inline-block;
+            margin-left: -20px;
+            padding-left: 28mm;
+        }
+
+        /* ===== GRID DE CONTEÚDO ===== */
+        .flyer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6mm;
+            padding: 12mm 12mm 10mm;
+            flex: 1;
+        }
+
+        .flyer-box {
+            background: white;
+            border: 2.5mm solid #1b1b1b;
+            border-radius: 6mm;
+            padding: 8mm;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .box-header {
+            display: flex;
+            align-items: center;
+            gap: 6mm;
+            margin-bottom: 7mm;
+            border-bottom: 2.5mm solid #1b1b1b;
+            padding-bottom: 5mm;
+        }
+
+        .box-icon-circle {
+            width: 16mm;
+            height: 16mm;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10mm;
+            font-weight: bold;
+            border: 2mm solid #1b1b1b;
             flex-shrink: 0;
         }
 
-        .box-icon.blue {
+        .box-icon-circle.blue {
             background: #3d6fb2;
         }
 
-        .flyer-box ul {
-            list-style: none;
-            font-size: 9px;
-            line-height: 1.5;
+        .box-icon-circle.red {
+            background: #d92d2d;
         }
 
-        .flyer-box li {
+        .box-header h2 {
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #d92d2d;
+            line-height: 1.1;
+        }
+
+        .box-content {
+            font-size: 8px;
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .box-content p {
             margin-bottom: 4mm;
-            display: flex;
-            gap: 4mm;
-            align-items: flex-start;
+            text-align: justify;
+            font-weight: 600;
         }
 
-        .flyer-box li::before {
+        .box-content ul {
+            list-style: none;
+            margin: 4mm 0;
+        }
+
+        .box-content li {
+            margin-bottom: 3.5mm;
+            display: flex;
+            gap: 5mm;
+            align-items: flex-start;
+            font-weight: 600;
+        }
+
+        .box-content li::before {
             content: "•";
             color: #d92d2d;
             font-weight: bold;
+            font-size: 10px;
+            min-width: 3mm;
+        }
+
+        .icon-item {
+            width: 12mm;
+            height: 12mm;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 7mm;
+            margin-bottom: 3mm;
+            border: 1.5mm solid #1b1b1b;
             flex-shrink: 0;
         }
 
-        .flyer-box p {
-            font-size: 9px;
-            line-height: 1.4;
-            margin-bottom: 3mm;
-        }
+        .icon-item.red-bg { background: #d92d2d; color: white; }
+        .icon-item.dark-bg { background: #1b1b1b; color: white; }
 
-        /* Footer Alert */
+        /* ===== ALERT SECTION ===== */
         .flyer-alert {
             background: #1b1b1b;
             color: white;
-            padding: 8mm;
-            border-radius: 6px;
-            margin-bottom: 8mm;
+            padding: 10mm 12mm;
+            margin: 0 12mm 10mm;
+            border-radius: 6mm;
             display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 10mm;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 12mm;
             align-items: center;
         }
 
+        .alert-content {
+            display: flex;
+            gap: 8mm;
+            align-items: flex-start;
+        }
+
+        .alert-icon {
+            width: 14mm;
+            height: 14mm;
+            background: #d92d2d;
+            border-radius: 2mm;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10mm;
+            flex-shrink: 0;
+        }
+
         .alert-text {
-            font-size: 11px;
+            font-size: 9.5px;
             font-weight: 900;
-            line-height: 1.3;
+            line-height: 1.25;
             text-transform: uppercase;
         }
 
@@ -204,35 +336,40 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 3mm;
+            gap: 4mm;
         }
 
         #qrcode {
             background: white;
-            padding: 3mm;
-            border-radius: 4px;
+            padding: 2mm;
+            border-radius: 3mm;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         #qrcode img {
             display: block;
-            width: 50mm;
-            height: 50mm;
+            width: 35mm !important;
+            height: 35mm !important;
         }
 
         .qr-text {
-            font-size: 8px;
-            font-weight: 700;
+            font-size: 7px;
+            font-weight: 900;
             text-align: center;
             text-transform: uppercase;
             line-height: 1.2;
         }
 
-        /* Footer credit */
-        .flyer-credit {
+        /* ===== FOOTER ===== */
+        .flyer-footer {
+            background: #d92d2d;
+            color: white;
+            padding: 5mm 12mm;
             text-align: center;
-            font-size: 7px;
-            font-weight: 600;
-            color: #666;
+            font-size: 6.5px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             line-height: 1.3;
@@ -242,7 +379,7 @@
             .flyer-container {
                 width: 100%;
                 height: auto;
-                border: 1px solid #ddd;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
             }
 
             .flyer-grid {
@@ -257,98 +394,140 @@
 </head>
 <body>
     <div class="flyer-container">
+        <div class="flyer-bg"></div>
+        
         <div class="flyer-content">
-            <!-- Header -->
+            <!-- HEADER com Logo FATEC -->
             <div class="flyer-header">
-                <div class="flyer-logo">✚</div>
-                <h1>GUIA INFORMATIVO<br>HANTAVÍRUS</h1>
-                <p>Educação em Saúde • FATEC Bauru</p>
+                <div class="header-logo-row">
+                    <div class="fatec-logo">
+                        <div class="fatec-inner">
+                            <div class="red">SB</div>
+                            <div class="black">✚</div>
+                            <div class="black">F</div>
+                            <div class="red">B</div>
+                        </div>
+                        <div class="fatec-text">SISTEMAS<br>BIOMÉDICOS<br>FATEC BAURU</div>
+                    </div>
+                </div>
+
+                <div class="header-title">
+                    <div class="virus-icon">⬤</div>
+                    <h1>GUIA INFORMATIVO HANTAVÍRUS</h1>
+                </div>
             </div>
 
-            <!-- Content Grid -->
+            <!-- GRID 2x2 -->
             <div class="flyer-grid">
-                <!-- O QUE É -->
+                <!-- BOX 1: O QUE É -->
                 <div class="flyer-box">
-                    <h2>
-                        <span class="box-icon blue">i</span>
-                        O QUE É
-                    </h2>
-                    <p>
-                        Doença viral aguda transmitida por roedores. Causa Síndrome Cardiopulmonar com alta taxa de letalidade (30-50%).
-                    </p>
-                    <p style="font-size: 8px; font-weight: 700; color: #d92d2d;">
-                        Incubação: 7-14 dias
-                    </p>
+                    <div class="box-header">
+                        <div class="box-icon-circle blue">i</div>
+                        <h2>O QUE É</h2>
+                    </div>
+                    <div class="box-content">
+                        <p>É uma doença viral aguda transmitida por roedores, causada pelo Hantavírus. Pode evoluir para a Síndrome Cardiopulmonar por Hantavírus (SCPH), com alta taxa de letalidade. O contágio ocorre principalmente por via respiratória, ao inhalar aerossóis de urina, fezes ou saliva de roedores infectados.</p>
+                    </div>
                 </div>
 
-                <!-- COMO SE TRANSMITE -->
+                <!-- BOX 2: COMO SE TRANSMITE -->
                 <div class="flyer-box">
-                    <h2>
-                        <span class="box-icon">↔</span>
-                        TRANSMISSÃO
-                    </h2>
-                    <ul>
-                        <li>Inalação de aerossóis</li>
-                        <li>Contato com urina/fezes</li>
-                        <li>Materiais contaminados</li>
-                        <li>Mordida de roedores</li>
-                    </ul>
-                    <p style="font-size: 8px; font-weight: 700; color: #d92d2d; margin-top: 4mm;">
-                        ⚠️ NÃO se transmite entre pessoas
-                    </p>
+                    <div class="box-header">
+                        <div class="box-icon-circle red">↔</div>
+                        <h2>COMO SE TRANSMITE</h2>
+                    </div>
+                    <div class="box-content">
+                        <ul>
+                            <li>
+                                <div class="icon-item red-bg">☁️</div>
+                                <span>Inalação de aerossóis contaminados por urina, fezes ou saliva de roedores infectados</span>
+                            </li>
+                            <li>
+                                <div class="icon-item dark-bg">▫</div>
+                                <span>Contato com materiais contaminados como palha, grãos, madeira e poeira</span>
+                            </li>
+                            <li>
+                                <div class="icon-item dark-bg">🐭</div>
+                                <span>Mordida ou contato direto com roedores infectados</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <!-- SINTOMAS -->
+                <!-- BOX 3: SINTOMAS -->
                 <div class="flyer-box">
-                    <h2>
-                        <span class="box-icon">✚</span>
-                        SINTOMAS
-                    </h2>
-                    <ul>
-                        <li>Febre alta (39-40°C)</li>
-                        <li>Dor muscular e calafrios</li>
-                        <li>Dor de cabeça intensa</li>
-                        <li>Tosse e falta de ar</li>
-                    </ul>
+                    <div class="box-header">
+                        <div class="box-icon-circle red">+</div>
+                        <h2>SINTOMAS</h2>
+                    </div>
+                    <div class="box-content">
+                        <ul>
+                            <li>
+                                <span>🌡️ Febre alta, calafrios e dor muscular</span>
+                            </li>
+                            <li>
+                                <span>🤕 Dor de cabeça, dor abdominal e náuseas</span>
+                            </li>
+                            <li>
+                                <span>💨 Falta de ar e dificuldade respiratória</span>
+                            </li>
+                            <li>
+                                <span>⚠️ Em casos graves: insuficiência cardiopulmonar</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <!-- PREVENÇÃO -->
+                <!-- BOX 4: PREVENÇÃO -->
                 <div class="flyer-box">
-                    <h2>
-                        <span class="box-icon">🛡</span>
-                        PREVENÇÃO
-                    </h2>
-                    <ul>
-                        <li>Manter ambiente limpo</li>
-                        <li>Usar máscara PFF2</li>
-                        <li>Luvas e proteção</li>
-                        <li>Controle de roedores</li>
-                    </ul>
+                    <div class="box-header">
+                        <div class="box-icon-circle red">🛡</div>
+                        <h2>PREVENÇÃO • AMPLA • COM ÍCONES</h2>
+                    </div>
+                    <div class="box-content">
+                        <ul>
+                            <li>
+                                <div class="icon-item red-bg">🧹</div>
+                                <span>LIMPEZA DO AMBIENTE: Manter ambientes limpos, arejados e livres de resíduos</span>
+                            </li>
+                            <li>
+                                <div class="icon-item red-bg">😷</div>
+                                <span>USE MÁSCARA E LUVAS: Máscara PFF2, luvas e avental para áreas de risco</span>
+                            </li>
+                            <li>
+                                <div class="icon-item red-bg">🏠</div>
+                                <span>EVITE CONTATO: Vedar frestas e armazenar alimentos corretamente</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <!-- Alert Section -->
+            <!-- ALERT SECTION -->
             <div class="flyer-alert">
-                <div class="alert-text">
-                    ATENÇÃO:<br>
-                    SE APRESENTAR SINTOMAS<br>
-                    PROCURE IMEDIATAMENTE<br>
-                    UMA UNIDADE DE SAÚDE!
+                <div class="alert-content">
+                    <div class="alert-icon">⚠️</div>
+                    <div class="alert-text">
+                        ATENÇÃO:<br>
+                        AO APRESENTAR SINTOMAS<br>
+                        PROCURE IMEDIATAMENTE<br>
+                        UMA UNIDADE DE SAÚDE!
+                    </div>
                 </div>
 
                 <div class="qr-section">
                     <div id="qrcode"></div>
                     <div class="qr-text">
-                        ESCANEIE<br>
-                        PARA SABER MAIS
+                        ESCANEIE PARA<br>
+                        SABER MAIS SOBRE<br>
+                        PREVENÇÃO
                     </div>
                 </div>
             </div>
 
-            <!-- Credit -->
-            <div class="flyer-credit">
-                Elaborado por Giovana Amancio, Milena Gasparotto e Marcelo Dias<br>
-                Curso Sistemas Biomédicos • FATEC Bauru • 2026
+            <!-- FOOTER -->
+            <div class="flyer-footer">
+                ELABORADO POR GIOVANA AMANCIO, MILENA GASPAROTTO E MARCELO DIAS • CURSO SISTEMAS BIOMÉDICOS • FATEC BAURU • DATA 2026
             </div>
         </div>
     </div>
@@ -361,7 +540,7 @@
             const qr = qrcode(0, "L");
             qr.addData(targetUrl);
             qr.make();
-            qrElement.innerHTML = qr.createImgTag(5, 0, "QR Code Hantavírus");
+            qrElement.innerHTML = qr.createImgTag(6, 0, "QR Code Hantavírus");
         }
     </script>
 </body>
