@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guia Informativo Hantavírus</title>
+    <meta
+      name="description"
+      content="Guia informativo sobre hantavírus com sintomas, transmissão e prevenção."
+    />
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.5.4/qrcode.min.js"></script>
+    <style>
+      :root {
+        --bg: #e7e4e0;
+        --black: #171717;
+        --paper: #f5f2ef;
+        --red: #d92d2d;
+        --red-dark: #b81418;
+        --blue: #3d6fb2;
+        --ink: #1b1b1b;
+        --line: #1c1c1c;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image:
+          radial-gradient(circle at 18% 20%, rgba(205, 58, 58, 0.08) 0 1.5%, transparent 1.7%),
+          radial-gradient(circle at 72% 28%, rgba(205, 58, 58, 0.08) 0 1.5%, transparent 1.7%);
+        background-size: 120px 120px;
+        pointer-events: none;
+      }
+
+      .page {
+        width: min(1180px, 93vw);
+        margin: 24px auto 18px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .top-banner {
+        display: grid;
+        place-items: center;
+        padding-top: 8px;
+      }
+
+      .campus-logo {
+        width: 290px;
+        height: 210px;
+        border-radius: 50%;
+        background: #f1efec;
+        border: 10px solid var(--line);
+        display: grid;
+        place-items: center;
+        position: relative;
+        transform: translateY(16px);
+        box-shadow: 0 8px 0 rgba(0,0,0,0.12);
+      }
+
+      .logo-ring {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 10px solid var(--red);
+        display: grid;
+        place-items: center;
+        background: #f6f4f1;
+        position: relative;
+      }
+
+      .logo-ring::before,
+      .logo-ring::after {
+        content: "";
+        position: absolute;
+        inset: 18px;
+        border-radius: 50%;
+        border: 7px solid rgba(0,0,0,0.9);
+      }
+
+      .logo-crest {
+        font-size: 3rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .logo-copy {
+        position: absolute;
+        bottom: 14px;
+        text-align: center;
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.05em;
+        color: var(--black);
+        line-height: 1.2;
+      }
+
+      .title-wrap {
+        width: 100%;
+        background: var(--black);
+        padding: 18px 20px 16px;
+        border-radius: 18px 18px 0 0;
+        border: 4px solid var(--black);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-top: -8px;
+        box-shadow: 0 8px 0 rgba(0,0,0,0.15);
+      }
+
+      .title-icon {
+        width: 62px;
+        height: 62px;
+        border-radius: 50%;
+        background: #f4f1ee;
+        border: 5px solid var(--red);
+        position: relative;
+      }
+
+      .title-icon::before,
+      .title-icon::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .title-icon::before {
+        width: 30px;
+        height: 30px;
+        border: 5px solid var(--red);
+        border-radius: 50%;
+      }
+
+      .title-icon::after {
+        width: 12px;
+        height: 12px;
+        background: var(--red);
+        border-radius: 50%;
+        box-shadow:
+          -16px 0 0 var(--red),
+          16px 0 0 var(--red),
+          0 -16px 0 var(--red),
+          0 16px 0 var(--red);
+      }
+
+      .title-wrap h1 {
+        margin: 0;
+        color: #f5f5f5;
+        font-size: clamp(2.2rem, 4vw, 4.2rem);
+        line-height: 0.9;
+        letter-spacing: -0.06em;
+        text-align: center;
+        font-weight: 900;
+      }
+
+      .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        padding: 18px 18px 0;
+      }
+
+      .card {
+        background: rgba(255,255,255,0.52);
+        border: 4px solid var(--line);
+        border-radius: 18px;
+        padding: 18px 18px 16px;
+        min-height: 260px;
+        box-shadow: 0 4px 0 rgba(0,0,0,0.12);
+      }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border-bottom: 4px solid var(--line);
+        padding-bottom: 10px;
+        margin-bottom: 16px;
+      }
+
+      .icon-circle {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+        font-size: 1.4rem;
+        color: #fff;
+        background: var(--blue);
+        border: 4px solid var(--line);
+      }
+
+      .icon-circle.red {
+        background: var(--red);
+      }
+
+      .icon-circle.arrow {
+        background: #f7f5f3;
+        color: var(--black);
+        font-size: 1.8rem;
+      }
+
+      .card h2 {
+        margin: 0;
+        font-size: clamp(1.45rem, 2vw, 2.4rem);
+        line-height: 1;
+        letter-spacing: -0.05em;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .info-card p {
+        margin: 0;
+        font-weight: 700;
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      .transmission-list,
+      .symptoms-list {
+        list-style: none;
+        margin: 6px 0 0;
+        padding: 0;
+        display: grid;
+        gap: 14px;
+      }
+
+      .transmission-list li,
+      .symptoms-list li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        font-size: 1.08rem;
+        line-height: 1.35;
+      }
+
+      .mini-icon,
+      .symptom-icon {
+        width: 42px;
+        min-width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        border: 2px solid rgba(0,0,0,0.1);
+        background: rgba(217, 45, 45, 0.08);
+        font-size: 1.25rem;
+      }
+
+      .mini-icon.air { background: rgba(61, 111, 178, 0.15); }
+      .mini-icon.box { background: rgba(50,50,50,0.10); }
+      .mini-icon.mouse { background: rgba(138, 92, 61, 0.12); }
+
+      .symptom-icon {
+        font-size: 1.45rem;
+      }
+
+      .prevention-card {
+        min-height: 360px;
+      }
+
+      .prevent-list {
+        display: grid;
+        gap: 18px;
+        margin-top: 12px;
+      }
+
+      .prevent-list article {
+        display: grid;
+        grid-template-columns: 64px 1fr;
+        gap: 12px;
+        align-items: start;
+      }
+
+      .prevent-icon {
+        width: 62px;
+        height: 62px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: var(--red);
+        border: 4px solid var(--line);
+        color: #fff;
+        font-size: 1.8rem;
+      }
+
+      .prevent-list h3 {
+        margin: 0 0 5px;
+        font-size: 1.06rem;
+        font-weight: 900;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      .prevent-list p {
+        margin: 0;
+        font-size: 0.98rem;
+        line-height: 1.4;
+        font-weight: 700;
+      }
+
+      .alert-bar {
+        margin: 18px 18px 0;
+        background: #141414;
+        color: #fff;
+        border: 5px solid var(--black);
+        border-radius: 10px;
+        display: grid;
+        grid-template-columns: 1.35fr 0.9fr;
+        align-items: center;
+        padding: 18px 20px 20px;
+      }
+
+      .alert-text {
+        font-size: clamp(1.5rem, 2vw, 2.5rem);
+        line-height: 1.1;
+        letter-spacing: -0.04em;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .qr-wrap {
+        display: grid;
+        place-items: center;
+        justify-items: center;
+      }
+
+      .qr-wrap a {
+        display: inline-block;
+        background: #fff;
+        border-radius: 12px;
+        padding: 10px;
+        box-shadow: 0 4px 0 rgba(0,0,0,0.18);
+      }
+
+      #qrcode {
+        display: grid;
+        place-items: center;
+      }
+
+      #qrcode img {
+        display: block;
+        width: 130px;
+        height: 130px;
+      }
+
+      .qr-wrap p {
+        margin: 10px 0 0;
+        text-align: center;
+        font-size: 0.9rem;
+        font-weight: 900;
+        line-height: 1.2;
+      }
+
+      .credit-line {
+        text-align: center;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        padding: 12px 10px 16px;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 840px) {
+        .content-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .alert-bar {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="top-banner">
+        <div class="campus-logo" aria-label="Logo do curso">
+          <div class="logo-ring">
+            <span class="logo-crest">✚</span>
+          </div>
+          <div class="logo-copy">
+            <div>SISTEMAS BIOMÉDICOS</div>
+            <div>FATEC - BAURU</div>
+          </div>
+        </div>
+
+        <div class="title-wrap">
+          <div class="title-icon" aria-hidden="true"></div>
+          <h1>GUIA INFORMATIVO<br />HANTAVÍRUS</h1>
+        </div>
+      </header>
+
+      <main class="content-grid">
+        <section class="card info-card">
+          <div class="card-header">
+            <div class="icon-circle">i</div>
+            <h2>O QUE É</h2>
+          </div>
+
+          <p>
+            É uma doença viral aguda transmitida por roedores, causada pelo
+            Hantavírus. Pode evoluir para a Síndrome Cardiopulmonar por
+            Hantavírus (SCPH), com alta taxa de letalidade. O contágio ocorre
+            principalmente por via respiratória, ao inhalar aerossóis de urina,
+            fezes ou saliva de roedores infectados.
+          </p>
+        </section>
+
+        <section class="card transmission-card">
+          <div class="card-header">
+            <div class="icon-circle arrow">↔</div>
+            <h2>COMO SE TRANSMITE</h2>
+          </div>
+
+          <ul class="transmission-list">
+            <li>
+              <span class="mini-icon air">❋</span>
+              <span>Inalação de aerossóis contaminados por urina, fezes ou saliva de roedores infectados</span>
+            </li>
+            <li>
+              <span class="mini-icon box">▣</span>
+              <span>Contato com materiais contaminados como palha, grãos, madeira e poeira</span>
+            </li>
+            <li>
+              <span class="mini-icon mouse">🐭</span>
+              <span>Mordida ou contato direto com roedores infectados</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="card symptoms-card">
+          <div class="card-header">
+            <div class="icon-circle red">✚</div>
+            <h2>SINTOMAS</h2>
+          </div>
+
+          <ul class="symptoms-list">
+            <li><span class="symptom-icon">◔</span> Febre alta, calafrios e dor muscular</li>
+            <li><span class="symptom-icon">◕</span> Dor de cabeça, dor abdominal e náuseas</li>
+            <li><span class="symptom-icon">◌</span> Falta de ar e dificuldade respiratória</li>
+            <li><span class="symptom-icon">✓</span> Em casos graves: insuficiência cardiopulmonar</li>
+          </ul>
+        </section>
+
+        <section class="card prevention-card">
+          <div class="card-header">
+            <div class="icon-circle red">🛡</div>
+            <h2>PREVENÇÃO • AMPLA •<br />COM ÍCONES ILUSTRATIVOS</h2>
+          </div>
+
+          <div class="prevent-list">
+            <article>
+              <div class="prevent-icon">◍</div>
+              <div>
+                <h3>Limpeza do ambiente</h3>
+                <p>
+                  Manter ambientes limpos, arejados e livres de resíduos. Evitar acúmulo de lixo e entulhos que atraiam roedores.
+                </p>
+              </div>
+            </article>
+
+            <article>
+              <div class="prevent-icon">◐</div>
+              <div>
+                <h3>Use máscara e luvas</h3>
+                <p>
+                  Ao limpar locais fechados, use máscara PFF2, luvas e avental. Medeça o ambiente antes de varrer para não levantar poeira.
+                </p>
+              </div>
+            </article>
+
+            <article>
+              <div class="prevent-icon">▣</div>
+              <div>
+                <h3>Evite contato com roedores</h3>
+                <p>
+                  Vedar frestas, armazenar alimentos em recipientes fechados e eliminar abrigos como madeiras e entulhos.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="alert-bar">
+        <div class="alert-text">
+          <strong>ATENÇÃO:</strong><br />
+          AO APRESENTAR SINTOMAS<br />
+          PROCURE IMEDIATAMENTE<br />
+          UMA UNIDADE DE SAÚDE!
+        </div>
+
+        <div class="qr-wrap">
+          <a
+            id="qr-link"
+            href="https://github.com/MardiamBru/Hantavirus-"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Abrir o repositório do projeto Hantavírus"
+          >
+            <div id="qrcode" aria-label="QR Code do projeto"></div>
+          </a>
+          <p>ESCANEIE PARA SABER MAIS<br />SOBRE PREVENÇÃO</p>
+        </div>
+      </footer>
+
+      <div class="credit-line">
+        ELABORADO POR GIOVANA AMANCIO, MILENA GASPAROTTO E MARCELO DIAS • CURSO SISTEMAS BIOMÉDICOS • FATEC BAURU • DATA 2026
+      </div>
+    </div>
+
+    <script>
+      const targetUrl = "https://github.com/MardiamBru/Hantavirus-";
+      const qrElement = document.getElementById("qrcode");
+      const qrLink = document.getElementById("qr-link");
+
+      if (window.qrcode && qrElement) {
+        const qr = qrcode(0, "L");
+        qr.addData(targetUrl);
+        qr.make();
+        qrElement.innerHTML = qr.createImgTag(8, 0, "QR Code Hantavírus");
+      }
+
+      if (qrLink) {
+        qrLink.href = targetUrl;
+      }
+    </script>
+  </body>
+</html>
