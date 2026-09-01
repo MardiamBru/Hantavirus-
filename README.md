@@ -68,10 +68,12 @@ Escaneie o QR Code no folheto para acessar o site com informações completas!
 ## 👥 Créditos
 Elaborado por:
 - Giovana Amancio
+- Luiz Gustavo Brito Sinhoretti
 - Milena Gasparotto
-- Marcelo Dias
+- Marcelo Dias Machado
 
 **Curso:** Sistemas Biomédicos  
+5° Semestre - Microbiologia Aplicada
 **Instituição:** FATEC Bauru  
 **Ano:** 2026
 
