@@ -1,86 +1,45 @@
 # Guia Informativo Hantavírus
 
-Um projeto educativo sobre prevenção e informações sobre Hantavírus, desenvolvido pelo Curso de Sistemas Biomédicos da FATEC Bauru.
+**[Acessar o site educativo](https://mardiambru.github.io/Hantavirus-/)**
 
-## 📋 Conteúdo do Repositório
+Projeto acadêmico do curso de Sistemas Biomédicos da FATEC Bauru, 5º semestre, Microbiologia Aplicada (2026).
 
-### 📱 Site Web
-- **`index.html`** - Site completo com informações detalhadas sobre Hantavírus
-  - Acessível em: https://mardiambru.github.io/Hantavirus-/
-  - Design responsivo com informações sobre:
-    - O que é Hantavírus
-    - Como se transmite
-    - Sintomas principais
-    - Medidas de prevenção
+## Site
 
-### 📄 Folhetos para Impressão
-- **`flyer.html`** - Versão em HTML otimizada para impressão em papel A4
-- **`flyer.pdf`** - Folheto em PDF pronto para impressão
-  - Contém QR Code que aponta para o site
-  - Design compacto de informações essenciais
-  - Pronto para distribuição
+O arquivo `index.html` oferece sete abas: visão geral, transmissão, sintomas e cuidados, prevenção, imagens e materiais, folder em PDF e fontes. Funciona em celulares e computadores, permite navegação por teclado e impressão de todas as seções. Sem JavaScript, todas as seções ficam disponíveis na mesma página.
 
-### 🔧 Ferramentas
-- **`generate_flyer.py`** - Script Python para regenerar o folheto em PDF
+O GitHub Pages publica o conteúdo da branch `main`. Não há dependências de compilação. As imagens são carregadas de sites oficiais e têm créditos junto às figuras. Se uma imagem externa falhar, o acesso à fonte permanece disponível.
 
-## 🚀 Como Usar
+## Fontes consultadas em 01/09/2026
 
-### Acessar o Site
-1. Abra seu navegador
-2. Acesse: https://mardiambru.github.io/Hantavirus-/
+- [Ministério da Saúde — Hantavirose](https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/h/hantavirose)
+- [CDC — About Hantavirus](https://www.cdc.gov/hantavirus/about/index.html)
+- [CDC — How to Clean Up After Rodents](https://www.cdc.gov/healthy-pets/rodent-control/clean-up.html)
+- [DIVE/SC — Hantavirose: o que é e o que fazer?](https://www.youtube.com/watch?v=U9Vbta8OXr4)
 
-### Imprimir o Folheto
-1. **Opção 1:** Abra `flyer.html` em seu navegador e clique em Imprimir (Ctrl+P)
-2. **Opção 2:** Use o arquivo `flyer.pdf` pronto para impressão
-3. Recomendado: Impressão em cores, papel A4
+As fotografias CDC PHIL [1136](https://wwwn.cdc.gov/phil/Details.aspx?pid=1136) (Cynthia Goldsmith) e [8358](https://wwwn.cdc.gov/phil/Details.aspx?pid=8358) (James Gathany) são de domínio público. O roedor fotografado é uma espécie da América do Norte, identificado dessa forma na legenda. O infográfico de limpeza é reproduzido do CDC, com fonte indicada.
 
-### Distribuir o Folheto
-Escaneie o QR Code no folheto para acessar o site com informações completas!
+## Créditos
 
-## 📊 Informações Principais
-
-### O Que é
-- Doença viral aguda transmitida por roedores
-- Taxa de letalidade: 30-50%
-- Período de incubação: 7-14 dias
-
-### Transmissão
-- Via inalação de aerossóis
-- Contato com materiais contaminados
-- Mordida de roedores infectados
-- **Importante:** Não se transmite entre pessoas
-
-### Sintomas
-- Febre alta (39-40°C)
-- Dor muscular e calafrios
-- Dor de cabeça intensa
-- Tosse e falta de ar
-
-### Prevenção
-- Manter ambiente limpo e arejado
-- Usar máscara PFF2 em áreas de risco
-- Usar luvas e proteção pessoal
-- Controlar a população de roedores
-
-## ⚠️ Alerta de Saúde
-**Se você apresentar sintomas (febre + dificuldade respiratória), procure imediatamente uma unidade de saúde!**
-
-## 👥 Créditos
-Elaborado por:
 - Giovana Amancio
 - Luiz Gustavo Brito Sinhoretti
 - Milena Gasparotto
 - Marcelo Dias Machado
 
-**Curso:** Sistemas Biomédicos  
-5° Semestre - Microbiologia Aplicada
-**Instituição:** FATEC Bauru  
-**Ano:** 2026
+## Folder da campanha
 
-## 📝 Licença
-Conteúdo educativo para fins de prevenção e informação pública.
+- `downloads/folder-hantavirus-A4.pdf`: PDF A4 com a composição do anexo, logotipo original, QR Code vetorial e orientação de limpeza revisada.
+- `assets/qr-site.svg`: QR Code para `https://mardiambru.github.io/Hantavirus-/`, com margem de quatro módulos.
+- `assets/folder-previa.jpg`: prévia do PDF exibida no site.
+- `assets/folder-original.jpg`: referência original, utilizada para exibir o logotipo do curso por recorte visual no SVG do cabeçalho.
+- `build_campaign.py`: fonte de construção do PDF e do QR Code; requer Python, Pillow e ReportLab.
 
----
+O QR foi decodificado com sucesso diretamente da renderização final do PDF. A cópia JPG original permanece como referência, mas deve-se distribuir o PDF atualizado. O trecho sobre limpeza foi corrigido conforme o CDC. Impressão: papel A4 colorido, ajustar à área imprimível. A nitidez do conteúdo original é limitada à resolução da imagem fornecida.
 
-Para mais informações sobre Hantavírus, consulte órgãos de saúde como o Ministério da Saúde ou a Secretaria de Saúde do seu estado.
-Essa home page é um guia informativo sobre o AntaVirus
+## Materiais anteriores
+
+Os arquivos `flyer.html`, `flyer.pdf`, `generate_flyer.py` e `INSTRUCOES_IMPRESSAO.md` foram preservados como versões anteriores. Não foram revisados nesta atualização; para compartilhar orientações atualizadas, utilize o site ou sua função de impressão.
+
+## Uso educativo
+
+Este projeto não substitui avaliação médica e não é uma publicação oficial dos órgãos citados. Direitos de materiais de terceiros permanecem com os respectivos titulares.
